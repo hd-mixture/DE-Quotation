@@ -1,5 +1,5 @@
 # DE Quotation Generator
-👉 [Click to Generate](https://de-quotation.vercel.app/)
+👉 [Click to Generate](https://quotation.darshanenterprises.site/)
 
 This is a web application for creating, managing, and downloading professional quotations.
 
