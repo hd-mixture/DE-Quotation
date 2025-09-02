@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/bill",
+      "destination": "https://hd-mixture.github.io/DE-Bill-Format/",
+      "permanent": true
+    }
+  ]
+}
