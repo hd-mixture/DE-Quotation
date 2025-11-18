@@ -13,9 +13,9 @@ export const generatePdf = (data: Quotation, headerImage: string | null, options
   let lastY = 10;
 
   const addTextHeader = () => {
-    doc.setFontSize(18).setFont("times", "bold");
+    doc.setFontSize(18).setFont("helvetica", "bold");
     doc.text(data.companyName, pageWidth / 2, 15, { align: "center" });
-    doc.setFontSize(10).setFont("times", "normal");
+    doc.setFontSize(10).setFont("helvetica", "normal");
     doc.text("All Kinds of Industrial & Decorative Painting, Sand & Shot Blasting & All Types of Labour Job Works.", pageWidth / 2, 22, { align: "center" });
     lastY = 35;
   };
@@ -48,7 +48,7 @@ export const generatePdf = (data: Quotation, headerImage: string | null, options
   };
   
   const addFooter = () => {
-      doc.setFontSize(9).setFont("times", "normal");
+      doc.setFontSize(9).setFont("helvetica", "normal");
       const addressLines = doc.splitTextToSize(`Add: ${data.companyAddress}`, pageWidth - 25);
       const contactLine = `Email- ${data.companyEmail || ''} (M) ${data.companyPhone || ''}`;
       
@@ -71,7 +71,7 @@ export const generatePdf = (data: Quotation, headerImage: string | null, options
   addHeader();
 
   const rightX = pageWidth - 15;
-  doc.setFontSize(11).setFont("times", "normal");
+  doc.setFontSize(11).setFont("helvetica", "normal");
   doc.text(`Date: ${format(new Date(data.quoteDate), "dd-MM-yyyy")}`, rightX, lastY, { align: "right" });
 
   doc.text("To,", 15, lastY);
@@ -80,12 +80,12 @@ export const generatePdf = (data: Quotation, headerImage: string | null, options
   doc.setFontSize(12);
   const customerBlockWidth = (pageWidth / 2) - 20;
 
-  doc.setFont("times", "bold");
+  doc.setFont("helvetica", "bold");
   const customerNameLines = doc.splitTextToSize(data.customerName, customerBlockWidth);
   doc.text(customerNameLines, 15, lastY);
   lastY += (Math.max(1, customerNameLines.length) * 5);
   
-  doc.setFont("times", "normal");
+  doc.setFont("helvetica", "normal");
   const customerAddressLines = doc.splitTextToSize(data.customerAddress, customerBlockWidth);
   doc.text(customerAddressLines, 15, lastY);
   lastY += (customerAddressLines.length * 5);
@@ -94,17 +94,17 @@ export const generatePdf = (data: Quotation, headerImage: string | null, options
 
   if (data.kindAttention) {
     lastY += 2;
-    doc.setFont("times", "bold");
+    doc.setFont("helvetica", "bold");
     doc.text("Kind Attention:-", 15, lastY);
-    doc.setFont("times", "normal");
+    doc.setFont("helvetica", "normal");
     doc.text(data.kindAttention, 45, lastY);
     lastY += 5;
   }
 
   lastY += 5;
-  doc.setFont("times", "bold");
+  doc.setFont("helvetica", "bold");
   doc.text("Sub:-", 15, lastY);
-  doc.setFont("times", "normal");
+  doc.setFont("helvetica", "normal");
   const subjectLines = doc.splitTextToSize(data.subject, 160);
   doc.text(subjectLines, 27, lastY);
   lastY += (subjectLines.length * 5) + 5;
@@ -213,7 +213,7 @@ export const generatePdf = (data: Quotation, headerImage: string | null, options
           fontStyle: 'bold',
           lineColor: 0,
           lineWidth: 0.1,
-          font: 'times',
+          font: 'helvetica',
           halign: 'center',
       },
       styles: {
@@ -221,7 +221,7 @@ export const generatePdf = (data: Quotation, headerImage: string | null, options
           lineWidth: 0.1,
           textColor: 0,
           fontSize: 10,
-          font: 'times',
+          font: 'helvetica',
           valign: 'middle'
       },
       columnStyles: columnStyles,
@@ -241,11 +241,11 @@ export const generatePdf = (data: Quotation, headerImage: string | null, options
   finalY = checkPageOverflow(finalY);
   finalY += 10;
   
-  doc.setFontSize(10).setFont("times", "bold");
+  doc.setFontSize(10).setFont("helvetica", "bold");
   doc.text("Term's & Condition :-", 15, finalY);
   finalY += 5;
   
-  doc.setFontSize(9).setFont("times", "normal");
+  doc.setFontSize(9).setFont("helvetica", "normal");
   const termsLines = doc.splitTextToSize(data.terms, 180);
 
   if (finalY + (termsLines.length * 4) > pageHeight - 40) {
@@ -258,7 +258,7 @@ export const generatePdf = (data: Quotation, headerImage: string | null, options
   finalY += (termsLines.length * 4) + 10;
   finalY = checkPageOverflow(finalY);
   
-  doc.setFontSize(11).setFont("times", "bold");
+  doc.setFontSize(11).setFont("helvetica", "bold");
   doc.text(`For, ${data.companyName}`, 15, finalY);
 
   try {
